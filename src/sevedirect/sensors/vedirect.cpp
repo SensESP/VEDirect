@@ -6,10 +6,9 @@
 VEDirectInput::VEDirectInput(Stream* rx_stream)
     : Sensor(), rx_stream_{rx_stream} {}
 
-
-void VEDirectInput::enable() {
+void VEDirectInput::start() {
   // enable reading the serial port
-  app.onAvailable(*rx_stream_, [this]() {
+  ReactESP::app->onAvailable(*rx_stream_, [this]() {
     while (rx_stream_->available()) {
       parser.handle(rx_stream_->read());
     }

@@ -1,15 +1,15 @@
 #ifndef _VEDIRECT_PARSER_H_
 #define _VEDIRECT_PARSER_H_
 
-#include <functional>
 #include <forward_list>
+#include <functional>
 #include <map>
 
 #include "Arduino.h"
-
 #include "sensesp.h"
+#include "sensesp/system/observablevalue.h"
 
-#include "system/observablevalue.h"
+using namespace sensesp;
 
 const int max_fields_in_block = 22;
 const int label_max_length = 9;
@@ -25,13 +25,16 @@ struct Field {
 };
 
 bool FieldParser_mV(const String value, ObservableValue<float>* observable);
-bool FieldParser_permille(const String value, ObservableValue<float>* observable);
+bool FieldParser_permille(const String value,
+                          ObservableValue<float>* observable);
 bool FieldParser_W(const String value, ObservableValue<float>* observable);
 bool FieldParser_mA(const String value, ObservableValue<float>* observable);
 bool FieldParser_mAh(const String value, ObservableValue<float>* observable);
 bool FieldParser_degC(const String value, ObservableValue<float>* observable);
-bool FieldParser_minutes(const String value, ObservableValue<float>* observable);
-bool FieldParser_seconds(const String value, ObservableValue<float>* observable);
+bool FieldParser_minutes(const String value,
+                         ObservableValue<float>* observable);
+bool FieldParser_seconds(const String value,
+                         ObservableValue<float>* observable);
 bool FieldParser_kWh(const String value, ObservableValue<float>* observable);
 bool FieldParser_Vac(const String value, ObservableValue<float>* observable);
 bool FieldParser_Iac(const String value, ObservableValue<float>* observable);
@@ -121,12 +124,12 @@ class Parser {
   void state_received_block(char c);
   void state_newline(char c);
   void state_error(char c);
-  
+
   label_str label_buffer;
   value_str value_buffer;
   // current offset of the buffer
   int cur_offset;
-  
+
   // number of fields received in the current block so far
   int num_fields_in_block = 0;
   // checksum
@@ -134,13 +137,11 @@ class Parser {
   std::map<String, std::function<bool(const String)>> field_parsers;
   void add_all_field_parsers();
 
-
   std::forward_list<Field> field_list;
 
   void parse_fields();
-
 };
 
-}
+}  // namespace VEDirect
 
 #endif
