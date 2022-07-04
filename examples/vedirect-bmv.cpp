@@ -33,6 +33,10 @@ void setup() {
 
   Serial1.begin(19200, SERIAL_8N1, kRXPin, kTXPin, false);
 
+
+  // Uncomment these lines to output VE.Direct input to the Serial port for
+  // debugging purposes.
+
   // app.onAvailable(Serial1, []() {
   //   Serial.write(Serial1.read());
   // });
