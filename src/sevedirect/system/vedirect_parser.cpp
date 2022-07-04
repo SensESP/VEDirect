@@ -320,6 +320,7 @@ void Parser::add_all_field_parsers() {
 }
 
 void Parser::handle(int c) {
+  Serial.write(c);
   checksum = (checksum + c) & 255;
   (this->*(current_state))(c);
 }
