@@ -41,11 +41,13 @@ The SCL pin has some EMC protection that might come handy.
 
 ### In-place builds
 
-An example main source code file for BMV device connectivity is located at `examples/vedirect-bmv.cpp`.
+An example source code file for BMV device connectivity is located at `examples/vedirect-bmv.cpp`.
 You can clone this repository and copy that file to `src/main.cpp` and build and upload.
-More details for doing that can be found in [SensESP documentation](https://signalk.org/SensESP/pages/getting_started/).
+More details for doing that can be found in [SensESP documentation](https://signalk.org/SensESP/pages/getting_started/). After configuring WiFi and Signal K settings, you should have your BMV data available in Signal K.
 
-After configuring WiFi and Signal K settings, you should have your BMV data available in Signal K.
+Likewise, an example source code file for interfacing MPPT solar charge controllers is located at `examples/vedirect-solar.cpp`.
+IMPORTANT: MPPT charge controllers use a 5V VE.Direct interface and can NOT be directly connected to the ESP32.
+A logic level converter or a voltage divider is required.
 
 ### Using SensESP/VEDirect as an imported library
 
