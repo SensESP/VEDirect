@@ -53,4 +53,7 @@ A logic level converter or a voltage divider is required.
 
 The library can also be pulled in as an external dependency in your own project.
 This is done by adding `SensESP/VEDirect` to your `platformio.ini` file `lib_deps` section.
-An example project is located at FIXME.
+The following repositories can be used as example projects:
+
+- [hurma-vedirect-solar](https://github.com/mairas/hurma-vedirect-solar)
+- [hurma-vedirect-bmv](https://github.com/mairas/hurma-vedirect-bmv)
