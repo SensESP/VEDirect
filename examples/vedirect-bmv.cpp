@@ -22,10 +22,7 @@ using namespace sensesp;
 reactesp::ReactESP app;
 
 void setup() {
-// Some initialization boilerplate when in debug mode...
-#ifndef SERIAL_DEBUG_DISABLED
-  SetupSerialDebug(115200);
-#endif
+  SetupLogging();
 
   SensESPAppBuilder builder;
 
@@ -99,8 +96,6 @@ void setup() {
   vedi->parser.data.maximum_auxiliary_voltage.connect_to(
       new SKOutputFloat("electrical.batteries.start.maximumVoltage",
                         "/Signal K/Start Battery Maximum Voltage"));
-
-  sensesp_app->start();
 }
 
 void loop() { app.tick(); }

@@ -4,9 +4,7 @@
 #include "sensesp.h"
 
 VEDirectInput::VEDirectInput(Stream* rx_stream)
-    : Sensor(), rx_stream_{rx_stream} {}
-
-void VEDirectInput::start() {
+    : rx_stream_{rx_stream} {
   // enable reading the serial port
   ReactESP::app->onAvailable(*rx_stream_, [this]() {
     while (rx_stream_->available()) {
