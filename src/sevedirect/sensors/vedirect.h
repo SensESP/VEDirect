@@ -8,10 +8,9 @@ using namespace sensesp;
 
 namespace sensesp {
 
-class VEDirectInput : public Sensor {
+class VEDirectInput {
  public:
   VEDirectInput(Stream* rx_stream);
-  virtual void start() override final;
   VEDirect::Parser parser;
 
  private:

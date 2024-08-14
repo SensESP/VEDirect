@@ -24,10 +24,7 @@ using namespace sensesp;
 reactesp::ReactESP app;
 
 void setup() {
-// Some initialization boilerplate when in debug mode...
-#ifndef SERIAL_DEBUG_DISABLED
-  SetupSerialDebug(115200);
-#endif
+  SetupLogging();
 
   SensESPAppBuilder builder;
 
@@ -68,8 +65,6 @@ void setup() {
       "electrical.solar." SOLAR_CHARGE_CONTROLLER_ID ".maxPowerToday",
       "/Signal K/Solar Charger " SOLAR_CHARGE_CONTROLLER_ID
       " Max Power Today"));
-
-  sensesp_app->start();
 }
 
 void loop() { app.tick(); }
